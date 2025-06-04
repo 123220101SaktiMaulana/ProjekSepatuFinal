@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 // Impor semua model dan fungsi syncDatabase dari index.js di folder models
 import {
     syncDatabase
-} from './models/all.js';
+} from './models/All.js';
 
 // Impor semua rute yang sudah ada
 import authRoutes from './routes/authRoutes.js';
