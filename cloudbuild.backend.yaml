@@ -1,12 +1,12 @@
 steps:
   # 1. Build Docker image untuk backend
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/shoes-101", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/sepatu-be101", "."]
     dir: "backend"
 
-  # 2. Push ke Artifact Registry (Cloud Build akan menggunakan ini secara otomatis)
+  # 2. Push ke Container Registry / Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/shoes-101"]
+    args: ["push", "gcr.io/$PROJECT_ID/sepatu-be101"]
 
   # 3. Deploy ke Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -15,17 +15,16 @@ steps:
       [
         "run",
         "deploy",
-        "shoes-101", # Nama layanan Cloud Run Anda
+        "sepatu-be101",
         "--image",
-        "gcr.io/$PROJECT_ID/shoes-101",
+        "gcr.io/$PROJECT_ID/sepatu-be101",
         "--timeout",
         "1000s",
-        # HAPUS BARIS INI: "--port", "5000",
+        "--port",
+        "5000",
         "--region",
-        "asia-southeast2", # <--- Ganti region agar lebih dekat dengan Indonesia
+        "us-central1",
         "--allow-unauthenticated",
-        "--platform",
-        "managed", # Penting untuk Cloud Run yang dikelola sepenuhnya
       ]
 
 # Log hanya akan disimpan di Google Cloud Logging
