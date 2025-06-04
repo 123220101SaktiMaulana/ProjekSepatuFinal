@@ -1,5 +1,5 @@
 import Order from '../models/Order.js';
-import Product from '../models/product.js'; // Pastikan huruf p kecil jika nama filenya product.js
+import Product from '../models/Product.js'; // Pastikan huruf p kecil jika nama filenya product.js
 import User from '../models/User.js'; // Untuk include user data in order history
 
 export const createOrder = async (req, res) => {

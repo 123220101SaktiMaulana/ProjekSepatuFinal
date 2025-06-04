@@ -3,7 +3,7 @@
     } from 'sequelize';
     import db from '../config/db.js';
     import User from './User.js'; // Import models
-    import Product from './product.js';
+    import Product from './Product.js';
 
     const Order = db.define('Order', {
         id: {

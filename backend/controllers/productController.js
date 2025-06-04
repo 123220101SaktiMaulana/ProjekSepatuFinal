@@ -1,4 +1,4 @@
-import Product from '../models/product.js'; // Import model Product
+import Product from '../models/Product.js'; // Import model Product
 import {
     Op
 } from 'sequelize'; // Untuk operator pencarian

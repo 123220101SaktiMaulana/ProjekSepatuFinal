@@ -1,6 +1,6 @@
 import db from '../config/db.js';
 import User from './User.js';
-import Product from './product.js';
+import Product from './Product.js';
 import Order from './Order.js';
 import ShoeStore from './ShoeStore.js';
 
