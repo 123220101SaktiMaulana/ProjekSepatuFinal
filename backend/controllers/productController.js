@@ -78,12 +78,7 @@ export const getProductById = async (req, res) => {
     }
 };
 
-// Opsional: Untuk admin menambah/mengedit produk
-// shoe-store-backend/src/controllers/productController.js
-import Product from '../models/Product.js'; // Pastikan import Product yang benar
-import { Op } from 'sequelize';
 
-// ... (fungsi getProducts dan getProductById yang sudah ada) ...
 
 export const createProduct = async (req, res) => {
     const { name, description, price, stock, brand, image_url } = req.body;
