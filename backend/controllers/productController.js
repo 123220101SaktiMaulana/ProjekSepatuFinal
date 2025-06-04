@@ -79,6 +79,34 @@ export const getProductById = async (req, res) => {
 };
 
 // Opsional: Untuk admin menambah/mengedit produk
-// export const createProduct = async (req, res) => { /* ... */ };
+// shoe-store-backend/src/controllers/productController.js
+import Product from '../models/Product.js'; // Pastikan import Product yang benar
+import { Op } from 'sequelize';
+
+// ... (fungsi getProducts dan getProductById yang sudah ada) ...
+
+export const createProduct = async (req, res) => {
+    const { name, description, price, stock, brand, image_url } = req.body;
+
+    // Lakukan validasi dasar
+    if (!name || !price || !stock) {
+        return res.status(400).json({ message: 'Nama, harga, dan stok wajib diisi.' });
+    }
+
+    try {
+        const newProduct = await Product.create({
+            name,
+            description,
+            price,
+            stock,
+            brand,
+            image_url,
+        });
+        res.status(201).json({ message: 'Produk berhasil dibuat', product: newProduct });
+    } catch (error) {
+        console.error('Error creating product:', error);
+        res.status(500).json({ message: 'Gagal membuat produk', error: error.message });
+    }
+};  
 // export const updateProduct = async (req, res) => { /* ... */ };
 // export const deleteProduct = async (req, res) => { /* ... */ };
